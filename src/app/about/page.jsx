@@ -31,7 +31,7 @@ function about() {
         </div>
       </div>
       <div className={styles.imgContainer}>
-        <Image src="/about.jpg" alt="" className={styles.heroImg} fill />
+        <Image src="/about.jpg" alt="" className={styles.img} fill />
       </div>
     </div>
   );

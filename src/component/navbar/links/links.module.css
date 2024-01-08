@@ -19,6 +19,7 @@
   }
   .mobileLinks {
     position: absolute;
+    z-index: 2;
     top: 100px;
     right: 0;
     width: 50%;
@@ -29,7 +30,7 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background-color: rebeccapurple;
+    background-color: var(--bg);
   }
   .menuButton {
     display: block;

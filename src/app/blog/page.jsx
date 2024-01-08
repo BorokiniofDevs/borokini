@@ -1,12 +1,23 @@
-import React from 'react'
+import PostCard from "@/component/postCard/postCard";
+import styles from "./blog.module.css";
 
-function blog
-() {
+function blog() {
   return (
-    <div>blog
-        
+    <div className={styles.container}>
+      <div className={styles.post}>
+        <PostCard />
+      </div>
+      <div className={styles.post}>
+        <PostCard />
+      </div>
+      <div className={styles.post}>
+        <PostCard />
+      </div>
+      <div className={styles.post}>
+        <PostCard />
+      </div>
     </div>
-  )
+  );
 }
 
-export default blog
+export default blog;
