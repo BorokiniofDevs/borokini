@@ -1,16 +1,22 @@
+import { getUser } from "@/lib/data";
 import styles from "./postUser.module.css";
 
-const getUser = async (userId) => {
-  const res = await fetch(
-    `https://jsonplaceholder.typicode.com/users/${userId}`
-  );
-  if (!res.ok) {
-    throw new Error("Something went wrong");
-  }
-  return res.json();
-};
+// FETCH WITH AN API
+// const getUser = async (userId) => {
+//   const res = await fetch(
+//     `https://jsonplaceholder.typicode.com/users/${userId}`
+//   );
+//   if (!res.ok) {
+//     throw new Error("Something went wrong");
+//   }
+//   return res.json();
+// };
 
 async function PostUser({ userId }) {
+  // FETCH WITH AN API
+  // const user = await getUser(userId);
+
+  // FETCH WITHOUT AN API
   const user = await getUser(userId);
 
   return (
