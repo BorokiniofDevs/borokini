@@ -1,7 +1,23 @@
+import PostUser from "@/component/postUser/postUser";
 import styles from "./singlePost.module.css";
 import Image from "next/image";
 
-function singleBlogPost() {
+const getPost = async (slug) => {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`);
+  if (!res.ok) {
+    throw new Error("Something went wrong");
+  }
+  return res.json();
+};
+
+async function singleBlogPost(params) {
+  // console.log(params);
+  const {
+    params: { slug },
+  } = params;
+
+  const post = await getPost(slug);
+  // console.log(post);
   return (
     <div className={styles.container}>
       <div className={styles.imgContainer}>
@@ -14,7 +30,7 @@ function singleBlogPost() {
       </div>
 
       <div className={styles.textContainer}>
-        <h1 className={styles.title}>Title</h1>
+        <h1 className={styles.title}>Title: {post.title}</h1>
         <div className={styles.detail}>
           <Image
             src="https://images.pexels.com/photos/2681751/pexels-photo-2681751.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -23,22 +39,13 @@ function singleBlogPost() {
             height={50}
             width={50}
           />
-          <div className={styles.detailedText}>
-            <span className={styles.detailedTitle}>Author</span>
-            <span className={styles.detailedValue}>Borokini</span>
-          </div>
+          <PostUser userId={post.userId} />
           <div className={styles.detailedText}>
             <span className={styles.detailedTitle}>Published</span>
             <span className={styles.detailedValue}>01.01.2024</span>
           </div>
         </div>
-        <div className={styles.content}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi velit
-          est illum, recusandae, adipisci tenetur quia excepturi porro aut
-          dignissimos in deleniti voluptatum sint dolorum vero reprehenderit cum
-          nihil. Porro assumenda necessitatibus eos inventore! Ut cupiditate
-          odit omnis consequuntur quam!
-        </div>
+        <div className={styles.content}>{post.body}</div>
       </div>
     </div>
   );

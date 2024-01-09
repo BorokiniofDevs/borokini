@@ -27,18 +27,7 @@
   object-fit: cover;
   border-radius: 50%;
 }
-.detailedText {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.detailedTitle {
-  color: gray;
-  font-weight: bold;
-}
-.detailedValue {
-  font-weight: 500;
-}
+
 .content {
   font-size: 20px;
 }
