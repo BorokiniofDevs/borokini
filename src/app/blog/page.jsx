@@ -17,7 +17,6 @@ async function blog() {
 
   // FECTCH WITHOUT AN API
   const posts = await getPosts();
-
   return (
     <div className={styles.container}>
       {posts && Array.isArray(posts) ? (

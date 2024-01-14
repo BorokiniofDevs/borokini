@@ -14,11 +14,14 @@ import { Suspense } from "react";
 //   return res.json();
 // };
 
-async function singleBlogPost(params) {
+async function singleBlogPost({ params }) {
   console.log(params);
-  const {
-    params: { slug },
-  } = params;
+  // console.log(slug);
+  // const {
+  //   params: { slug },
+  // } = params;
+
+  const { slug } = params;
 
   // FETCH WITH AN API
   // const post = await getPost(slug);
@@ -27,36 +30,30 @@ async function singleBlogPost(params) {
   // const id = params
   const post = await getPost(slug);
   console.log(post);
+  console.log(post.userId);
 
   return (
     <div className={styles.container}>
-      {post?.img && (
+      {post.img && (
         <div className={styles.imgContainer}>
-          <Image className={styles.img} src={post.img} alt="" fill />
+          <Image className={styles.img} src={post?.img} alt="" fill />
         </div>
       )}
 
       <div className={styles.textContainer}>
         <h1 className={styles.title}>Title: {post?.title}</h1>
         <div className={styles.detail}>
-          <Image
-            src="https://images.pexels.com/photos/2681751/pexels-photo-2681751.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            className={styles.avatar}
-            alt=""
-            height={50}
-            width={50}
-          />
-          {/* {post && (
+          {post && (
             <Suspense fallback={<div>Loading...#</div>}>
               <PostUser userId={post.userId} />
             </Suspense>
-          )} */}
+          )}
           <div className={styles.detailedText}>
             <span className={styles.detailedTitle}>Published</span>
             <span className={styles.detailedValue}>01.01.2024</span>
           </div>
         </div>
-        <div className={styles.content}>{post?.desc}</div>
+        <div className={styles.content}>{post.desc}</div>
       </div>
     </div>
   );

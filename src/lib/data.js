@@ -4,6 +4,7 @@
 // {id : 3 , name : "Esquire Mandeley"},
 // ]
 
+import { unstable_noStore } from "next/cache";
 import { Post, User } from "./models";
 import { connectToDb } from "./utils";
 
@@ -63,7 +64,7 @@ export const getUser = async (id) => {
   // return users.find((user)=> user.id === parseInt(id))
   try {
     await connectToDb();
-    const user = await User.findById();
+    const user = await User.findById(id);
     return user;
   } catch (error) {
     console.log(error);
@@ -72,6 +73,7 @@ export const getUser = async (id) => {
 };
 
 export const getUsers = async () => {
+  // unstable_noStore();
   try {
     await connectToDb();
     const users = await User.find();
