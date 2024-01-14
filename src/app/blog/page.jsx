@@ -11,6 +11,12 @@ import { getPosts } from "@/lib/data";
 //   }
 //   return res.json();
 // };
+
+export const metadata = {
+  title: "Blog Page",
+  description: "This page displays updated blog Post of the website",
+};
+
 async function blog() {
   // FECTCH WITH AN API
   // const posts = await getData();

@@ -14,6 +14,15 @@ import { Suspense } from "react";
 //   return res.json();
 // };
 
+export const generateMetaData = async ({ params }) => {
+  const { slug } = params;
+  const post = await getPost(slug);
+  return {
+    title: post.title,
+    description: post.desc,
+  };
+};
+
 async function singleBlogPost({ params }) {
   console.log(params);
   // console.log(slug);

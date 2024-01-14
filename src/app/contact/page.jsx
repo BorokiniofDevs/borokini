@@ -1,5 +1,11 @@
 import styles from "./contact.module.css";
 import Image from "next/image";
+
+export const metadata = {
+  title: "Contact Page",
+  description:
+    "This page displays the contact information and how to reach out to the managers of the website",
+};
 function contact() {
   return (
     <div className={styles.container}>
