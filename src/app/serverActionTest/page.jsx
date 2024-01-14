@@ -1,4 +1,4 @@
-import addPost from "@/lib/addPost";
+import { addPost, deletePost } from "@/lib/addPost";
 import React from "react";
 
 function Page() {
@@ -11,6 +11,10 @@ function Page() {
         <input type="text" placeholder="userId" name="userId" />
         <input type="text" placeholder="slug" name="slug" />
         <button>Create</button>
+      </form>
+      <form action={deletePost}>
+        <input type="text" placeholder="postId" name="id" />
+        <button>Delete</button>
       </form>
     </div>
   );
