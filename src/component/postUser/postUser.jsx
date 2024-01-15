@@ -2,38 +2,39 @@ import { getUser } from "@/lib/data";
 import styles from "./postUser.module.css";
 import Image from "next/image";
 
-// FETCH WITH AN API
-// const getUser = async (userId) => {
-//   const res = await fetch(
-//     `https://jsonplaceholder.typicode.com/users/${userId}`
-//   );
+// FETCH DATA WITH AN API
+// const getData = async (userId) => {
+//   const res = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}` ,{cache:"no-store"});
+
 //   if (!res.ok) {
 //     throw new Error("Something went wrong");
 //   }
+
 //   return res.json();
 // };
 
-async function PostUser({ userId }) {
-  // FETCH WITH AN API
-  // const user = await getUser(userId);
+const PostUser = async ({ userId }) => {
+  // FETCH DATA WITH AN API
+  // const user = await getData(userId);
 
-  // FETCH WITHOUT AN API
+  // FETCH DATA WITHOUT AN API
   const user = await getUser(userId);
-  console.log(user);
+
   return (
     <div className={styles.container}>
       <Image
-        src={user?.img ? user.img : "/noUser.png"}
         className={styles.avatar}
+        src={user.img ? user.img : "/noUser.png"}
         alt=""
-        height={50}
         width={50}
+        height={50}
       />
-      <div className={styles.texts}></div>
-      <span className={styles.title}>Author</span>
-      <span className={styles.username}>{user.username}</span>
+      <div className={styles.texts}>
+        <span className={styles.title}>Author</span>
+        <span className={styles.username}>{user.username}</span>
+      </div>
     </div>
   );
-}
+};
 
 export default PostUser;

@@ -62,6 +62,8 @@ export const getPost = async (slug) => {
 
 export const getUser = async (id) => {
   // return users.find((user)=> user.id === parseInt(id))
+  unstable_noStore();
+
   try {
     await connectToDb();
     const user = await User.findById(id);
@@ -73,7 +75,6 @@ export const getUser = async (id) => {
 };
 
 export const getUsers = async () => {
-  // unstable_noStore();
   try {
     await connectToDb();
     const users = await User.find();
