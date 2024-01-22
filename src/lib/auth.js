@@ -1,8 +1,8 @@
 import NextAuth from "next-auth";
 import GitHub from "next-auth/providers/github";
+import { connectToDb } from "./utils";
+import { User } from "./models";
 // import CredentialsProvider from "next-auth/providers/credentials";
-// import { connectToDb } from "./utils";
-// import { User } from "./models";
 // import bcrypt from "bcryptjs";
 // import { authConfig } from "./auth.config";
 
@@ -50,29 +50,30 @@ export const {
     //   },
     // }),
   ],
-  //   callbacks: {
-  //     async signIn({ user, account, profile }) {
-  //       if (account.provider === "github") {
-  //         connectToDb();
-  //         try {
-  //           const user = await User.findOne({ email: profile.email });
+  callbacks: {
+    async signIn({ user, account, profile }) {
+      console.log(profile);
+      if (account.provider === "github") {
+        connectToDb();
+        try {
+          const user = await User.findOne({ email: profile.email });
 
-  //           if (!user) {
-  //             const newUser = new User({
-  //               username: profile.login,
-  //               email: profile.email,
-  //               image: profile.avatar_url,
-  //             });
+          if (!user) {
+            const newUser = new User({
+              username: profile.login,
+              email: profile.email,
+              image: profile.avatar_url,
+            });
 
-  //             await newUser.save();
-  //           }
-  //         } catch (err) {
-  //           console.log(err);
-  //           return false;
-  //         }
-  //       }
-  //       return true;
-  //     },
-  //     ...authConfig.callbacks,
-  //   },
+            await newUser.save();
+          }
+        } catch (err) {
+          console.log(err);
+          return false;
+        }
+      }
+      return true;
+    },
+    // ...authConfig.callbacks,
+  },
 });
