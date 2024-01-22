@@ -65,7 +65,7 @@ export const getUser = async (id) => {
   unstable_noStore();
 
   try {
-    await connectToDb();
+    connectToDb();
     const user = await User.findById(id);
     return user;
   } catch (error) {
@@ -76,7 +76,7 @@ export const getUser = async (id) => {
 
 export const getUsers = async () => {
   try {
-    await connectToDb();
+    connectToDb();
     const users = await User.find();
     return users;
   } catch (error) {
