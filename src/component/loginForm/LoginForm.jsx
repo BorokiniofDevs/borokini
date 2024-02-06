@@ -22,3 +22,31 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
+
+// "use client";
+// import { login } from "@/lib/action";
+// import { useFormState, useFormStatus } from "react-dom";
+// import styles from "./loginForm.module.css";
+
+// export default function LoginForm() {
+//   const [errorMessage, dispatch] = useFormState(login, undefined);
+
+//   return (
+//     <form action={dispatch} className={styles.form}>
+//       <input type="username" name="username" placeholder="Username" required />
+//       <input type="password" name="password" placeholder="Password" required />
+//       <div>{errorMessage && <p>{errorMessage}</p>}</div>
+//       <LoginButton />
+//     </form>
+//   );
+// }
+
+// function LoginButton() {
+//   const { pending } = useFormStatus();
+
+//   return (
+//     <button aria-disabled={pending} type="submit">
+//       Login
+//     </button>
+//   );
+// }
